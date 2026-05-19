@@ -1,0 +1,13 @@
+pila miPila {
+
+crear([1,2,"hola"])!
+
+empujar(50)!
+
+empujar("mundo")!
+
+mirar()!
+
+sacar()!
+
+}
