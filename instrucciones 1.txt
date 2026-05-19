@@ -1,0 +1,66 @@
+Estas instrucciones sirven para ejecutar el analizador hecho con:
+
+ANTLR4
+JavaScript
+Node.js
+Visual Studio Code
+
+1- Abrir el proyecto, la carpeta "AnalizadorPila"
+2- Debes tener estos archivos:
+├── Pila.g4
+├── input.txt
+├── parser.js
+├── package.json
+├── PilaLexer.js
+├── PilaParser.js
+└── PilaListener.js
+3- Escribimos un ejemplo en el archivo input.txt:
+ 
+pila miPila {
+
+crear([1,2,"hola"])!
+
+empujar(50)!
+
+empujar("mundo")!
+
+mirar()!
+
+sacar()!
+
+}
+
+4- Ejecutamos en terminal --> Nueva terminal el siguiente codigo:
+node parser.js
+deberia mostrar:
+===== TOKENS =====
+
+pila -> PILA
+miPila -> ID
+crear -> CREAR
+50 -> NUMBER
+
+Interpretacion:
+===== INTERPRETACION =====
+
+Pila creada: [ 1, 2, 'hola' ]
+
+Push -> 50
+
+Push -> mundo
+
+Peek -> mundo
+
+Pop -> mundo
+
+Pila final: [ 1, 2, 'hola', 50 ]
+
+
+
+Podemos probar un error sintactico, por ejemplo en:
+pila miPila {
+
+empujar(50)
+
+}
+Aquí falta "!" despues de empujar(50)
